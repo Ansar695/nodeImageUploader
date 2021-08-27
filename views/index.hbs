@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .image{
+            width: 90%;
+            height: auto;
+            margin: auto;
+            display: flex;
+
+        }
+        .image .img{
+            width: 200px;
+            height: 200px;
+        }
+        .image .img img{
+            width: 100%;
+            height: 100%;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>File Uploads</h1>
+        <%= typeof msg  != 'undefined' ? msg : '' %>
+        <form action="/upload", method="POST" enctype="multipart/form-data">
+            <button type="submit" class="btn">Upload</button>
+            <input type="file" multiple="multiple" accept="image/*" name="myFile">
+        </form>
+    </div>
+
+    <div class="image">
+        <img src="<%= typeof file  != 'undefined' ? file : '' %>" alt="">
+    </div>
+
+</body>
+</html>

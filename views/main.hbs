@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        h1{
+            text-align: center;
+        }
+        .top{
+            margin: auto;
+            text-align: center;
+        }
+        .top form{
+
+        }
+        .image{
+            width: 94%;
+            height: auto;
+            margin: auto;
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            grid-gap: 1rem;
+            margin-top: 4rem;
+        }
+        .img-main{
+            width: 250px;
+            height: 300px;
+            border: 1px solid gray;
+        }
+        .img{
+            width: 250px;
+            height: 250px;
+            background-color: green;
+        }
+        .img img{
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .bottom{
+            margin-top: 2rem;;
+        }
+    </style>
+</head>
+<body>
+    <h1>Image Uploader</h1>
+    <div class="top">
+        <form action="uploadmultiple" enctype="multipart/form-data" method="POST">
+            <input type="file" name="myFile"  multiple/>
+            <button type="submit">Upload Image</button>
+        </form>
+        <div class="image">
+        {{#each images}}
+            {{#each this}}
+                {{#if imageBase64}}
+                    <div class="img-main">
+                        <div class="img"><img src="data:{{contentType}};base64,{{imageBase64}}" alt=""></div>
+                        <h3>Title</h3>
+                    </div>
+                {{/if}}
+            {{/each}}
+        {{/each}}
+        </div>
+    </div>
+</body>
+</html>
